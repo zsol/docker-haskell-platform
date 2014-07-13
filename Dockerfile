@@ -2,6 +2,7 @@ from ubuntu:precise
 
 run useradd -m -s /bin/bash haskell
 run sed -i 's/main$/main universe/' /etc/apt/sources.list && apt-get update && apt-get -y install build-essential libedit2 libglu1-mesa-dev libgmp3-dev libgmp3c2 zlib1g-dev freeglut3-dev curl sudo
+run locale-gen en_US.UTF-8
 run echo "haskell ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/haskell && chmod 0440 /etc/sudoers.d/haskell
 
 user haskell
@@ -15,3 +16,4 @@ run curl -O http://lambda.haskell.org/platform/download/2013.2.0.0/haskell-platf
 run rm -rf haskell-platform-2013.2.0.0
 
 env HOME /home/haskell
+env LC_ALL en_US.UTF8
